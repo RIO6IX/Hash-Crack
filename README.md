@@ -324,49 +324,6 @@ upgrade-insecure-requests
 
 This helps keep the static page locked down for GitHub Pages hosting.
 
-## GitHub Pages Deployment
-
-1. Push this repository to GitHub.
-2. Open the repository on GitHub.
-3. Go to **Settings**.
-4. Open **Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select the branch, usually `master` or `main`.
-7. Select `/ (root)`.
-8. Click **Save**.
-9. Wait for GitHub Pages to publish the site.
-
-After deployment, GitHub will show a public Pages URL.
-
-## Local Development
-
-Because this project is static, development is simple.
-
-Run:
-
-```powershell
-python -m http.server 8080
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8080/
-```
-
-Edit the files and refresh the browser.
-
-## Browser Compatibility
-
-Recommended browsers:
-
-- Google Chrome
-- Microsoft Edge
-- Firefox
-- Brave
-
-Some crypto features use the browser Web Crypto API. Modern browsers are recommended.
-
 ## Important Ethical Notice
 
 This tool is for:
@@ -389,29 +346,8 @@ Do not use it for:
 
 You are responsible for using this project legally and ethically.
 
-## Suggested GitHub Topics
-
-You can add these topics to the GitHub repository:
-
-```text
-cybersecurity
-hashing
-hashcat
-ctf
-security-tools
-encoder
-decoder
-static-site
-github-pages
-rio6ix
-```
-
 ## Project Status
 
 Current version: `2.0.0`
 
 The project is usable as a static browser security console and can be extended with more modules in `app.js`.
-
-## License
-
-Add a `LICENSE` file if you want to define reuse, modification, and distribution rights for this project.
