@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+    >
+    <meta name="referrer" content="no-referrer">
+    <meta name="color-scheme" content="dark light">
+    <meta
+      name="description"
+      content="RIO6IX Hash Crack Lab is a static browser security console for encoding, decoding, hashing, HMAC, PBKDF2, hash analysis, and safe crackme practice."
+    >
+    <title>RIO6IX Hash Crack Lab</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#codecInput">Skip to input</a>
+    <header class="topbar">
+      <a class="brand" href="#codecInput" aria-label="RIO6IX Hash Crack Lab">
+        <span class="brand-mark" aria-hidden="true">R6</span>
+        <span>
+          <strong>RIO6IX Hash Crack Lab</strong>
+          <small>RIO6IX browser security console</small>
+        </span>
+      </a>
+      <div class="topbar-center" aria-label="Build information">
+        <span>Version 2.0.0</span>
+        <span>local transform, hash, analyze, crackme</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="themeToggle" type="button" aria-label="Switch color theme" title="Switch theme">
+          <span id="themeIcon" aria-hidden="true">Dark</span>
+        </button>
+        <a href="about.html">About Me</a>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="operations-panel" aria-labelledby="operationsTitle">
+        <div class="panel-title">
+          <h2 id="operationsTitle">RIO6IX Modules</h2>
+        </div>
+        <label class="search-label" for="operationSearch">Search operations</label>
+        <input id="operationSearch" type="search" placeholder="Search..." autocomplete="off">
+        <div class="suggestion-box" id="suggestionBox" aria-live="polite"></div>
+
+        <div class="operation-groups" id="operationGroups">
+          <section class="operation-group">
+            <h3>Rapid Ops</h3>
+            <button type="button" class="operation-item active" data-operation="base64-encode" data-tab="encode">Base64 Encode</button>
+            <button type="button" class="operation-item" data-operation="base64-decode" data-tab="encode">Base64 Decode</button>
+            <button type="button" class="operation-item" data-operation="hex-encode" data-tab="encode">Hex Encode</button>
+            <button type="button" class="operation-item" data-operation="hex-decode" data-tab="encode">Hex Decode</button>
+            <button type="button" class="operation-item" data-operation="url-decode" data-tab="encode">URL Decode</button>
+            <button type="button" class="operation-item" data-operation="entropy" data-tab="encode">Entropy</button>
+            <button type="button" class="operation-item" data-operation="hash-sha256" data-tab="hash">SHA-256 Hash</button>
+            <button type="button" class="operation-item" data-operation="crackme" data-tab="crack">Crackme</button>
+          </section>
+          <section class="operation-group">
+            <h3>Codec Forge</h3>
+            <button type="button" class="operation-item" data-operation="base32-encode" data-tab="encode">Base32 Encode</button>
+            <button type="button" class="operation-item" data-operation="base32-decode" data-tab="encode">Base32 Decode</button>
+            <button type="button" class="operation-item" data-operation="binary-encode" data-tab="encode">Binary Encode</button>
+            <button type="button" class="operation-item" data-operation="binary-decode" data-tab="encode">Binary Decode</button>
+            <button type="button" class="operation-item" data-operation="url-encode" data-tab="encode">URL Encode</button>
+            <button type="button" class="operation-item" data-operation="html-encode" data-tab="encode">HTML Entity Encode</button>
+            <button type="button" class="operation-item" data-operation="html-decode" data-tab="encode">HTML Entity Decode</button>
+            <button type="button" class="operation-item" data-operation="base64url-encode" data-tab="encode">Base64URL Encode</button>
+            <button type="button" class="operation-item" data-operation="base64url-decode" data-tab="encode">Base64URL Decode</button>
+            <button type="button" class="operation-item" data-operation="jwt-decode" data-tab="encode">JWT Decode</button>
+          </section>
+          <section class="operation-group">
+            <h3>Intel Extract</h3>
+            <button type="button" class="operation-item" data-operation="json-pretty" data-tab="encode">JSON Beautify</button>
+            <button type="button" class="operation-item" data-operation="json-minify" data-tab="encode">JSON Minify</button>
+            <button type="button" class="operation-item" data-operation="hexdump" data-tab="encode">Hexdump</button>
+            <button type="button" class="operation-item" data-operation="extract-urls" data-tab="encode">Extract URLs</button>
+            <button type="button" class="operation-item" data-operation="extract-emails" data-tab="encode">Extract Emails</button>
+            <button type="button" class="operation-item" data-operation="parse-url" data-tab="encode">Parse URL</button>
+            <button type="button" class="operation-item" data-operation="defang" data-tab="encode">Defang IOCs</button>
+            <button type="button" class="operation-item" data-operation="refang" data-tab="encode">Refang IOCs</button>
+          </section>
+          <section class="operation-group">
+            <h3>Text Ops</h3>
+            <button type="button" class="operation-item" data-operation="rot13" data-tab="encode">ROT13</button>
+            <button type="button" class="operation-item" data-operation="caesar" data-tab="encode">Caesar Shift</button>
+            <button type="button" class="operation-item" data-operation="upper" data-tab="encode">To Uppercase</button>
+            <button type="button" class="operation-item" data-operation="lower" data-tab="encode">To Lowercase</button>
+            <button type="button" class="operation-item" data-operation="reverse" data-tab="encode">Reverse</button>
+            <button type="button" class="operation-item" data-operation="slugify" data-tab="encode">Slugify</button>
+            <button type="button" class="operation-item" data-operation="unique-lines" data-tab="encode">Unique Lines</button>
+            <button type="button" class="operation-item" data-operation="sort-lines" data-tab="encode">Sort Lines</button>
+            <button type="button" class="operation-item" data-operation="trim-lines" data-tab="encode">Trim Lines</button>
+            <button type="button" class="operation-item" data-operation="remove-empty-lines" data-tab="encode">Remove Empty Lines</button>
+            <button type="button" class="operation-item" data-operation="morse-encode" data-tab="encode">Morse Encode</button>
+            <button type="button" class="operation-item" data-operation="morse-decode" data-tab="encode">Morse Decode</button>
+          </section>
+          <section class="operation-group">
+            <h3>Hash Core</h3>
+            <button type="button" class="operation-item" data-operation="hash-md5" data-tab="hash">MD5 Hash</button>
+            <button type="button" class="operation-item" data-operation="hash-sha1" data-tab="hash">SHA-1 Hash</button>
+            <button type="button" class="operation-item" data-operation="hash-sha512" data-tab="hash">SHA-512 Hash</button>
+            <button type="button" class="operation-item" data-operation="pbkdf2" data-tab="hash">PBKDF2</button>
+            <button type="button" class="operation-item" data-operation="hashcat" data-tab="hashcat">Hashcat Helper</button>
+          </section>
+          <section class="operation-group">
+            <h3>Generators</h3>
+            <button type="button" class="operation-item" data-operation="uuid-v4" data-tab="encode">UUID v4</button>
+            <button type="button" class="operation-item" data-operation="timestamp" data-tab="encode">Timestamp</button>
+            <button type="button" class="operation-item" data-operation="password-score" data-tab="encode">Password Score</button>
+            <button type="button" class="operation-item" data-operation="text-stats" data-tab="encode">Text Stats</button>
+          </section>
+        </div>
+      </aside>
+
+      <section class="recipe-panel" aria-labelledby="recipeTitle">
+        <div class="panel-title recipe-title">
+          <h2 id="recipeTitle">Workflow Deck</h2>
+          <div class="icon-actions" aria-label="Workflow actions">
+            <button id="recipeSave" type="button" title="Pin current module">Pin</button>
+            <button id="recipeClear" type="button" title="Clear workspace">Reset</button>
+          </div>
+        </div>
+
+        <div class="recipe-card">
+          <div class="drop-zone" id="dropZone">
+            Drag a RIO6IX module here or click one from the left panel.
+          </div>
+          <div class="recipe-card-head">
+            <span id="activeOperationName">Base64 Encode</span>
+            <span id="activeOperationBadge">Encoding</span>
+          </div>
+          <div class="tab-list" role="tablist" aria-label="Toolkit sections">
+            <button class="tab-button active" type="button" data-tab="encode" role="tab" aria-selected="true">Encode / Decode</button>
+            <button class="tab-button" type="button" data-tab="hash" role="tab" aria-selected="false">Hash Lab</button>
+            <button class="tab-button" type="button" data-tab="crack" role="tab" aria-selected="false">Crackme</button>
+            <button class="tab-button" type="button" data-tab="hashcat" role="tab" aria-selected="false">Hashcat</button>
+          </div>
+
+          <div class="tool-panel active" id="panel-encode" data-panel="encode" role="tabpanel">
+            <div class="recipe-controls">
+              <label>
+                Operation
+                <select id="codecOperation">
+                  <optgroup label="Encode">
+                    <option value="base64-encode">Text to Base64</option>
+                    <option value="base32-encode">Text to Base32</option>
+                    <option value="hex-encode">Text to Hex</option>
+                    <option value="binary-encode">Text to Binary</option>
+                    <option value="url-encode">URL Encode</option>
+                    <option value="html-encode">HTML Entity Encode</option>
+                    <option value="base64url-encode">Text to Base64URL</option>
+                  </optgroup>
+                  <optgroup label="Decode">
+                    <option value="base64-decode">Base64 to Text</option>
+                    <option value="base32-decode">Base32 to Text</option>
+                    <option value="hex-decode">Hex to Text</option>
+                    <option value="binary-decode">Binary to Text</option>
+                    <option value="url-decode">URL Decode</option>
+                    <option value="html-decode">HTML Entity Decode</option>
+                    <option value="base64url-decode">Base64URL to Text</option>
+                  </optgroup>
+                  <optgroup label="Analyze">
+                    <option value="entropy">Entropy</option>
+                    <option value="hexdump">Hexdump</option>
+                    <option value="extract-urls">Extract URLs</option>
+                    <option value="extract-emails">Extract Emails</option>
+                    <option value="parse-url">Parse URL</option>
+                    <option value="defang">Defang IOCs</option>
+                    <option value="refang">Refang IOCs</option>
+                    <option value="password-score">Password Score</option>
+                    <option value="text-stats">Text Stats</option>
+                  </optgroup>
+                  <optgroup label="Transform">
+                    <option value="rot13">ROT13</option>
+                    <option value="caesar">Caesar Shift</option>
+                    <option value="jwt-decode">Decode JWT Header and Payload</option>
+                    <option value="json-pretty">Pretty Print JSON</option>
+                    <option value="json-minify">Minify JSON</option>
+                    <option value="upper">Uppercase</option>
+                    <option value="lower">Lowercase</option>
+                    <option value="reverse">Reverse Text</option>
+                    <option value="slugify">Slugify</option>
+                    <option value="unique-lines">Unique Lines</option>
+                    <option value="sort-lines">Sort Lines</option>
+                    <option value="trim-lines">Trim Lines</option>
+                    <option value="remove-empty-lines">Remove Empty Lines</option>
+                    <option value="morse-encode">Morse Encode</option>
+                    <option value="morse-decode">Morse Decode</option>
+                    <option value="uuid-v4">Generate UUID v4</option>
+                    <option value="timestamp">Generate Timestamp</option>
+                  </optgroup>
+                </select>
+              </label>
+              <label>
+                Caesar shift
+                <input id="caesarShift" type="number" min="-25" max="25" value="3">
+              </label>
+            </div>
+          </div>
+
+          <div class="tool-panel" id="panel-hash" data-panel="hash" role="tabpanel" hidden>
+            <div class="recipe-controls">
+              <label>
+                Algorithm
+                <select id="hashAlgorithm">
+                  <option value="SHA-256">SHA-256</option>
+                  <option value="SHA-384">SHA-384</option>
+                  <option value="SHA-512">SHA-512</option>
+                  <option value="SHA-1">SHA-1</option>
+                  <option value="MD5">MD5</option>
+                </select>
+              </label>
+              <label>
+                HMAC secret
+                <input id="hmacSecret" type="password" autocomplete="off" placeholder="Optional">
+              </label>
+              <label>
+                PBKDF2 iterations
+                <input id="kdfIterations" type="number" min="1000" max="1000000" value="100000">
+              </label>
+              <label>
+                PBKDF2 salt
+                <input id="kdfSalt" type="text" autocomplete="off" placeholder="Optional salt">
+              </label>
+              <div class="hash-inspector">
+                <label for="hashAnalyzer">Hash analyzer</label>
+                <input id="hashAnalyzer" type="text" spellcheck="false" placeholder="Paste a hash to identify likely formats.">
+                <output id="hashGuess">Awaiting hash.</output>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-panel" id="panel-crack" data-panel="crack" role="tabpanel" hidden>
+            <div class="recipe-controls">
+              <label>
+                Algorithm
+                <select id="crackAlgorithm">
+                  <option value="SHA-256">SHA-256</option>
+                  <option value="SHA-512">SHA-512</option>
+                  <option value="SHA-1">SHA-1</option>
+                  <option value="MD5">MD5</option>
+                </select>
+              </label>
+              <label>
+                Salt mode
+                <select id="saltMode">
+                  <option value="none">No salt</option>
+                  <option value="prefix">Salt + password</option>
+                  <option value="suffix">Password + salt</option>
+                </select>
+              </label>
+              <label>
+                Salt
+                <input id="saltValue" type="text" autocomplete="off" placeholder="Optional">
+              </label>
+              <div class="inline-actions">
+                <button id="demoLoad" type="button">Load demo</button>
+                <button id="crackClear" type="button">Clear crackme</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-panel" id="panel-hashcat" data-panel="hashcat" role="tabpanel" hidden>
+            <div class="recipe-controls">
+              <label>
+                Hash type
+                <select id="hashcatMode">
+                  <option value="0">MD5 - mode 0</option>
+                  <option value="100">SHA1 - mode 100</option>
+                  <option value="1400">SHA2-256 - mode 1400</option>
+                  <option value="1700">SHA2-512 - mode 1700</option>
+                  <option value="1000">NTLM - mode 1000</option>
+                  <option value="3200">bcrypt - mode 3200</option>
+                  <option value="1800">sha512crypt - mode 1800</option>
+                </select>
+              </label>
+              <label>
+                Attack mode
+                <select id="attackMode">
+                  <option value="0">Dictionary - mode 0</option>
+                  <option value="3">Mask - mode 3</option>
+                  <option value="6">Wordlist + mask - mode 6</option>
+                  <option value="7">Mask + wordlist - mode 7</option>
+                </select>
+              </label>
+              <label>
+                Hash file
+                <input id="hashFileName" type="text" value="hashes.txt">
+              </label>
+              <label>
+                Wordlist or mask
+                <input id="wordlistName" type="text" value="wordlists/rockyou.txt">
+              </label>
+              <fieldset>
+                <legend>Options</legend>
+                <label class="check-row"><input id="optimizedKernels" type="checkbox" checked> Optimized kernels</label>
+                <label class="check-row"><input id="showStatus" type="checkbox" checked> Status timer</label>
+                <label class="check-row"><input id="restoreSafe" type="checkbox" checked> Restore enabled</label>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+
+        <div class="bake-row">
+          <span>STEP</span>
+          <button class="bake-button" id="bakeButton" type="button">Run Module</button>
+          <label class="auto-bake"><input id="autoBake" type="checkbox" checked> Auto Run</label>
+        </div>
+        <p class="status-line" id="codecStatus" role="status">Ready.</p>
+      </section>
+
+      <section class="io-panel" aria-label="Input and output">
+        <div class="io-card input-card">
+          <div class="panel-title">
+            <h2>Input</h2>
+            <div class="inline-actions compact">
+              <button id="codecClear" type="button">Clear</button>
+              <button id="codecSwap" type="button">Swap</button>
+            </div>
+          </div>
+          <textarea id="codecInput" spellcheck="false" placeholder="Paste text, encoded data, URLs, IOCs, JWTs, JSON, hashes, or wordlists here."></textarea>
+          <div class="editor-meta"><span>ABC</span><span id="inputStats">0 chars</span></div>
+        </div>
+
+        <div class="io-card wordlist-card">
+          <div class="panel-title">
+            <h2>Crackme Wordlist</h2>
+          </div>
+          <textarea id="wordlistInput" spellcheck="false" placeholder="One candidate per line. Used only by Crackme."></textarea>
+          <textarea id="targetHashes" class="mini-textarea" spellcheck="false" placeholder="Target hash list for Crackme, one per line."></textarea>
+        </div>
+
+        <div class="io-card output-card">
+          <div class="panel-title">
+            <h2>Output</h2>
+            <button class="copy-button" type="button" data-copy="codecOutput">Copy</button>
+          </div>
+          <textarea id="codecOutput" readonly spellcheck="false" placeholder="Result appears here."></textarea>
+          <textarea id="hashOutput" class="hidden-output" readonly spellcheck="false" aria-hidden="true"></textarea>
+          <textarea id="crackOutput" class="hidden-output" readonly spellcheck="false" aria-hidden="true"></textarea>
+          <textarea id="hashcatOutput" class="hidden-output" readonly spellcheck="false" aria-hidden="true"></textarea>
+          <div class="editor-meta"><span>ABC</span><span id="outputStats">0 chars</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-bar">
+      <span>Made for and created by <a href="about.html">Chanuka Isuru Sampath (RIO6IX)</a></span>
+      <span>Authorized testing and CTF learning only.</span>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
