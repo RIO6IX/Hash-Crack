@@ -33,21 +33,11 @@ RIO6IX Hash Crack Lab is a static browser-based security toolkit for encoding, d
 - Creator About page
 - Custom RIO6IX logo icon and favicon
 
-## Live / Local Hosting
+## Live Website
 
-This project is ready for GitHub Pages free hosting. You can also run it locally with Python.
+Open the live GitHub Pages site:
 
-```powershell
-python -m http.server 8080
-```
-
-Open:
-
-```text
-http://127.0.0.1:8080/
-```
-
-You can also open `index.html` directly in a browser, but using a local server is better for testing routing and assets.
+https://rio6ix.github.io/Hash-Crack/
 
 ## Pages And Files
 
